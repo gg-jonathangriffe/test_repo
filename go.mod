@@ -1,1 +1,1 @@
-require a v1
+require a.io v1.7.0
