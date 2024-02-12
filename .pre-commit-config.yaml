@@ -1,0 +1,10 @@
+default_stages: [commit]
+repos:
+  - repo: local
+    hooks:
+      - id: ggshield-local
+        name: GitGuardian Shield
+        entry: /home/jonathangriffe/.local/share/virtualenvs/ggshield-tYsDJ0Pv/bin/ggshield iac scan pre-commit
+        language: system
+        stages: [commit]
+        pass_filenames: false
