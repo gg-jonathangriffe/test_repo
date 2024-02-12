@@ -2,7 +2,7 @@
   name: ggshield (pre-commit)
   entry: /home/jonathangriffe/.local/share/virtualenvs/ggshield-tYsDJ0Pv/bin/ggshield
   description: Runs ggshield to detect hardcoded secrets, security vulnerabilities and policy breaks.
-  stages: [commit]
-  args: ['iac', 'scan', 'pre-commit']
+  stages: [push]
+  args: ['iac', 'scan', 'pre-push']
   language: python
   pass_filenames: false
