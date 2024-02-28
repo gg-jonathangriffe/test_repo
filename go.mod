@@ -1,5 +1,5 @@
 module github.com/my/module
-
+# Gitguardian demo
 go 1.18
 
 require (
