@@ -7,6 +7,6 @@ sca:
   ignored-paths:
     - 'terraform/dir/'
   ignored-vulnerabilities:
-    - identifier: 'CVE-2024-1300'
+    - identifier: 'GHSA-9ph3-v2vh-3qx7'
       path: 'pom.xml'
       comment: 'my-comment'
