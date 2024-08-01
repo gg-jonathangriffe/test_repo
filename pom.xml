@@ -1,9 +1,0 @@
-<project simple_project="http://simple_project.org">
-    <dependencies>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-maven-service-factory</artifactId>
-            <version>4.3.4</version>
-        </dependency>
-    </dependencies>
-</project>
