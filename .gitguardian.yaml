@@ -3,10 +3,6 @@ version: 2
 iac:
   ignored-policies:
     - 'GG_IAC_0047'
-sca:
+secret:
   ignored-paths:
-    - 'terraform/dir/'
-  ignored-vulnerabilities:
-    - identifier: 'GHSA-9ph3-v2vh-3qx7'
-      path: 'pom.xml'
-      comment: 'my-comment'
+    - 'tes'
