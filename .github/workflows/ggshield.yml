@@ -12,10 +12,9 @@ jobs:
         with:
           fetch-depth: 0 # fetch all history so multiple commits can be scanned
       - name: GitGuardian iac scan
-        uses: GitGuardian/ggshield/actions/iac@v1.23.0
+        uses: GitGuardian/ggshield/actions/secret@v1.34.0
         with:
-          args: --all
-            
+          args: -v
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
