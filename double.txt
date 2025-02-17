@@ -1,0 +1,6 @@
+mysql postgres
+db_host=legithosst.com
+db_port=5432
+db=tables
+db_username=itsme
+db_password=TaE1dAgT3iDi6QGER
