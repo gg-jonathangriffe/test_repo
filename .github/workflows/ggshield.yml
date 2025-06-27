@@ -1,23 +1,43 @@
-name: GitGuardian iac scan
+name: Scan Secrets GitGuardian
 
-on: [push, pull_request]
+on: [pull_request]
+
+permissions:
+  # required for all workflows
+  security-events: write
+
+  # only required for workflows in private repositories
+  actions: read
+  contents: read
 
 jobs:
-  scanning:
-    name: GitGuardian iac scan
-    runs-on: ubuntu-latest
+  scan-secrets-gitguardian:
+    name: Scan Secrets GitGuardian
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: true
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          fetch-depth: 0 # fetch all history so multiple commits can be scanned
-      - name: GitGuardian iac scan
-        uses: GitGuardian/ggshield/actions/secret@v1.34.0
+          python-version: "3.10"
+
+      - name: Gitguardian scan actions
+        uses: GitGuardian/ggshield-action@master
         with:
-          args: -v
+          args: -v --json -o actions-gitguardian-result.json --log-file actions-gitguardian-result.log --with-incident-details --exit-zero
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
           GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+      - name: Archive  results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ggshield-report
+          path: actions-gitguardian-result.json
