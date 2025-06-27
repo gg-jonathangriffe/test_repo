@@ -1,12 +1,6 @@
 name: Scan Secrets GitGuardian
 
-on:
-  pull_request:
-    branches:
-      - develop
-      - main
-      - master
-      - *
+on: [pull_request]
 
 permissions:
   # required for all workflows
