@@ -13,7 +13,7 @@ permissions:
 jobs:
   scan-secrets-gitguardian:
     name: Scan Secrets GitGuardian
-
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: true
 
